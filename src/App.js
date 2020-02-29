@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from './components/Navbar/Navbar';
 import './App.css';
 
 class App extends React.Component {
@@ -10,10 +11,11 @@ class App extends React.Component {
   }
   render() {
     return (
-    <div className="App">
-      <header className="App-header">
-        <p>CiteCheckr</p>
-      </header>
+    <div className="App-outer-container">
+        <Navbar />
+        <div className="App-inner-container">
+          
+        </div>
     </div>
   );
     }
