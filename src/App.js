@@ -9,7 +9,9 @@ import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import Campaigns from './pages/Campaigns/Campaigns';
 import Profile from './pages/Profile/Profile';
-import './App.css';
+import Login from './pages/Login/Login';
+import Signup from './pages/Signup/Signup';
+import './App.scss';
 
 class App extends React.Component {
   constructor() {
@@ -32,6 +34,12 @@ class App extends React.Component {
             } />
             <Route exact path ='/profile' render={props => 
               <Profile />
+            } />
+            <Route exact path ='/login' render={props => 
+              <Login />
+            } />
+            <Route exact path ='/signup' render={props => 
+              <Signup />
             } />
           </Switch>
         </div>

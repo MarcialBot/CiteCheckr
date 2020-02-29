@@ -4,7 +4,7 @@ CiteCheckr is a web scraper used to check backlinks within a website. By inputti
 
 ## Technologies Used
 
-MongoDB, ExpressJS, React, NodeJS, Sass, Google OAuth, Cheerio, Mongoose
+MongoDB, ExpressJS, React, NodeJS, Sass, Google OAuth, Puppeteer, Mongoose
 
 ## Getting Started
 

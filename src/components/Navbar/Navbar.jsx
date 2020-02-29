@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Navbar.module.css'
+import styles from './Navbar.module.scss'
 import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
@@ -10,13 +10,17 @@ const Navbar = (props) => {
             </Link>
             <ul>
                 <li>
-                    <Link to ='/Campaigns'>Campaigns</Link>
+                    <Link to ='/campaigns'>Campaigns</Link>
                 </li>
                 <li>
-                    <Link to ='/Profile'>Profile</Link>
+                    <Link to ='/crofile'>Profile</Link>
                 </li>
-                <li>Login</li>
-                <li>Sign Up</li>
+                <li>
+                    <Link to ='/login'>Login</Link>
+                </li>
+                <li>
+                    <Link to ='/signup'>Sign Up</Link>
+                </li>
             </ul>
         </nav>
     )
