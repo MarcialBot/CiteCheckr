@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './SignupForm.module.scss';
+import styles from './LoginForm.module.scss';
 
-class SignupForm extends React.Component {
+class LoginForm extends React.Component {
 
     state = this.getInitialState();
 
@@ -13,10 +13,8 @@ class SignupForm extends React.Component {
 
     getInitialState() {
         return {
-        name:'',
         email:'',
         password: '',
-        passwordConfirmation:''
         }
     };
 
@@ -29,15 +27,7 @@ class SignupForm extends React.Component {
         return(
         <form onSubmit={this.handleSubmit} className={styles.form}>
             <fieldset>
-                <legend>Signup Form</legend>
-                <label htmlFor="name">Full Name</label>
-                <input 
-                    id="name" 
-                    name="name" 
-                    type="text" 
-                    value={this.state.name}
-                    onChange={this.handleChange}
-                />
+                <legend>Login Form</legend>
                 <label htmlFor="email">Email Address</label>
                 <input 
                     id="email" 
@@ -46,7 +36,7 @@ class SignupForm extends React.Component {
                     value={this.state.email}
                     onChange={this.handleChange}
                 />
-                <label htmlFor="password">Create Password</label>
+                <label htmlFor="password">Password</label>
                 <input 
                     id="password" 
                     name="password" 
@@ -54,19 +44,11 @@ class SignupForm extends React.Component {
                     value={this.state.password}
                     onChange={this.handleChange}
                 />
-                <label htmlFor="passwordConfirmation">Confirm Password</label>
-                <input 
-                    id="passwordConfirmation" 
-                    name="passwordConfirmation" 
-                    type="password" 
-                    value={this.state.passwordConfirmation}
-                    onChange={this.handleChange}
-                />
-                <button className="btn"  type="submit">Submit</button>
+                <button className="btn"  type="submit">Log In</button>
             </fieldset>
         </form>
         );
     }
 }
 
-export default SignupForm;
+export default LoginForm;

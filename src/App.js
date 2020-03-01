@@ -11,6 +11,7 @@ import Campaigns from './pages/Campaigns/Campaigns';
 import Profile from './pages/Profile/Profile';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
+
 import './App.scss';
 
 class App extends React.Component {

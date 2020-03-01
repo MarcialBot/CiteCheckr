@@ -13,7 +13,7 @@ const Navbar = (props) => {
                     <Link to ='/campaigns'>Campaigns</Link>
                 </li>
                 <li>
-                    <Link to ='/crofile'>Profile</Link>
+                    <Link to ='/profile'>Profile</Link>
                 </li>
                 <li>
                     <Link to ='/login'>Login</Link>
