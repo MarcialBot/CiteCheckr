@@ -7,7 +7,8 @@ module.exports = {
 
 async function index(req, res) {
     try{
-        const campaigns = await Campaign.find({}).sort('-createdAt');
+        const campaigns = await Campaign.find({})
+        .sort('-createdAt').populate('addedBy');
         res.json({ campaigns });
 
     } catch (error) {

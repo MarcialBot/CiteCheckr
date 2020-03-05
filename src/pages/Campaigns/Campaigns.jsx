@@ -6,6 +6,14 @@ const Campaigns = (props) => {
     return (
         <main>
             <h1>Campaigns</h1>
+            {
+                props.campaigns.map(({name,_id, addedBy}) => (
+                <section key={_id}>
+                    <h1>{name}</h1>
+                    <small>Added By: {addedBy.name}</small>
+                </section>
+                ))
+            }
             <CampaignForm {...props}/>
         </main>
     );

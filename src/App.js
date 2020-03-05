@@ -14,11 +14,13 @@ import Signup from './pages/Signup/Signup';
 
 import './App.scss';
 import userService from './utils/userService';
+import campaignService from './utils/campaignService';
 
 class App extends React.Component {
 
   state = {
-    user: userService.getUser()
+    user: userService.getUser(),
+    campaigns: []
   }
 
   handleSignupOrLogin = () => {
@@ -28,6 +30,13 @@ class App extends React.Component {
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
+  }
+
+  async componentDidMount() {
+    if(userService.getUser()) {
+      const { campaigns } = await campaignService.index();
+      this.setState({ campaigns })
+    }
   }
 
   render() {
@@ -41,7 +50,9 @@ class App extends React.Component {
             } />
             <Route exact path ='/campaigns' render={props => 
               userService.getUser()
-              ? <Campaigns />
+              ? <Campaigns 
+              {...props} 
+              campaigns={this.state.campaigns}/>
               : <Redirect to='/login' />
             } />
             <Route exact path ='/profile' render={props => 
