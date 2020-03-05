@@ -48,11 +48,12 @@ class App extends React.Component {
               <Profile />
             } />
             <Route exact path ='/login' render={props => 
-              <Login />
+              <Login {...props}
+              handleSignupOrLogin={this.handleSignupOrLogin} />
             } />
             <Route exact path ='/signup' render={props => 
               <Signup {...props}  
-              handleSignupOrLogin={this.handleSignupOrLogin}/>
+              handleSignupOrLogin={this.handleSignupOrLogin} />
             } />
           </Switch>
         </div>
