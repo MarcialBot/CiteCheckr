@@ -5,6 +5,15 @@
     margin: 0 auto;
 }
 
+.form p {
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 auto;
+}
+
 .form input {
     width: 100%;
     margin: .5rem 0 .5rem 0;
@@ -13,6 +22,5 @@
     background-color: #F8F9FA;
 }
 
-.button {
-    background-color: red;
-}
+
+

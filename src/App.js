@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route }  from 'react-router-dom';
+import { Switch, Route, Redirect }  from 'react-router-dom';
 
 //Presentational components
 import Navbar from './components/Navbar/Navbar';
@@ -13,25 +13,36 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 
 import './App.scss';
+import userService from './utils/userService';
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state= {
 
-    }
+  state = {
+    user: userService.getUser()
   }
+
+  handleSignupOrLogin = () => {
+    this.setState({ user: userService.getUser() })
+  }
+
+  handleLogout = () => {
+    userService.logout();
+    this.setState({ user: null });
+  }
+
   render() {
     return (
     <div className="App-outer-container">
-        <Navbar />
+        <Navbar handleLogout={this.handleLogout} />
         <div className="App-inner-container">
           <Switch> 
             <Route exact path ='/' render={props => 
               <Home />
             } />
             <Route exact path ='/campaigns' render={props => 
-              <Campaigns />
+              userService.getUser()
+              ? <Campaigns />
+              : <Redirect to='/login' />
             } />
             <Route exact path ='/profile' render={props => 
               <Profile />
@@ -40,7 +51,8 @@ class App extends React.Component {
               <Login />
             } />
             <Route exact path ='/signup' render={props => 
-              <Signup />
+              <Signup {...props}  
+              handleSignupOrLogin={this.handleSignupOrLogin}/>
             } />
           </Switch>
         </div>
