@@ -15,12 +15,16 @@ import Signup from './pages/Signup/Signup';
 import './App.scss';
 import userService from './utils/userService';
 import campaignService from './utils/campaignService';
+import websiteService from './utils/websiteService';
+
+let site = 'https://scrapethissite.com/';
 
 class App extends React.Component {
 
   state = {
     user: userService.getUser(),
-    campaigns: []
+    campaigns: [],
+    domain: ''
   }
 
   handleSignupOrLogin = () => {
@@ -32,10 +36,13 @@ class App extends React.Component {
     this.setState({ user: null });
   }
 
+
   async componentDidMount() {
     if(userService.getUser()) {
       const { campaigns } = await campaignService.index();
-      this.setState({ campaigns })
+      this.setState({ campaigns });
+      const { domain } = await websiteService.index();
+      this.setState({ domain });
     }
   }
 
@@ -46,13 +53,15 @@ class App extends React.Component {
         <div className="App-inner-container">
           <Switch> 
             <Route exact path ='/' render={props => 
-              <Home />
+              <Home {...props} />
             } />
             <Route exact path ='/campaigns' render={props => 
               userService.getUser()
               ? <Campaigns 
               {...props} 
-              campaigns={this.state.campaigns}/>
+              campaigns={this.state.campaigns}
+              domain={this.state.domain}
+                />
               : <Redirect to='/login' />
             } />
             <Route exact path ='/profile' render={props => 

@@ -1,9 +1,10 @@
 import React from 'react';
-import styles from './CampaignForm.module.scss';
+import styles from './WebsiteForm.module.scss';
 import userService from '../../utils/userService';
-import campaignService from '../../utils/campaignService';
+import websiteService from '../../utils/websiteService';
 
-class CampaignForm extends React.Component {
+
+class WebsiteForm extends React.Component {
 
     state = this.getInitialState();
 
@@ -34,7 +35,7 @@ class CampaignForm extends React.Component {
         try {
             const { name } = this.state;
             const addedBy = userService.getUser()._id
-            await campaignService.create({name, addedBy});
+            await websiteService.create({name, addedBy});
 
             // this.setState(this.getInitialState(), () => {
             //     this.props.history.push('/campaigns');
@@ -53,12 +54,12 @@ class CampaignForm extends React.Component {
         return(
         <section className={styles.section}>
             {
-                this.state.error && <p>{this.state.error}</p>
+                this.state.name && <p>{this.state.name}</p>
             }
             <form onSubmit={this.handleSubmit} className={styles.form}>
                 <fieldset>
-                    <legend>New Campaign</legend>
-                    <label htmlFor="name">Name:</label>
+                    <legend>Enter Domain</legend>
+                    <label htmlFor="name">Domain: </label>
                     <input 
                         id="name" 
                         name="name" 
@@ -66,7 +67,7 @@ class CampaignForm extends React.Component {
                         value={this.state.name}
                         onChange={this.handleChange}
                         />
-                    <button disabled={!this.isFormValid()} className="btn"  type="submit">Add Campaign</button>
+                    <button disabled={!this.isFormValid()} className="btn"  type="submit">Check Domain</button>
                 </fieldset>
             </form>
         </section>
@@ -74,4 +75,4 @@ class CampaignForm extends React.Component {
     }
 }
 
-export default CampaignForm;
+export default WebsiteForm;

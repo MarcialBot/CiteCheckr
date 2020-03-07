@@ -2,7 +2,8 @@ const Campaign = require('../models/campaign');
 
 module.exports = {
     create,
-    index
+    index,
+    deleteOne
 };
 
 async function index(req, res) {
@@ -20,6 +21,15 @@ async function create(req, res) {
     try{
         const campaign = await Campaign.create(req.body);
         res.json({ campaign });
+    } catch (error) {
+        res.status(401).json({err: 'Unauthorized'});
+    }
+}
+
+async function deleteOne(req, res) {
+    try{
+        const campaign = await Campaign.findOneAndDelete(req.body);
+        res.json({campaign});
     } catch (error) {
         res.status(401).json({err: 'Unauthorized'});
     }
