@@ -1,11 +1,14 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const getUrls = require('get-urls');
-const BASE_URL = '/api/websites';
-// let site = 'https://scrapethissite.com/';
+const BASE_URL = '/api/';
+let cors_api_url = 'https://cors-anywhere.herokuapp.com/';
 
 function getData(site) {
-    return axios.get(site)
+    console.log(site);
+    let domain = site.name;
+    console.log(domain);
+    return axios.get(domain)
     .then( res => {
         const $ = cheerio.load(res.data).html();
         console.log(getUrls($));

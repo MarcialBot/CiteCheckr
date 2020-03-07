@@ -35,7 +35,8 @@ class WebsiteForm extends React.Component {
         try {
             const { name } = this.state;
             const addedBy = userService.getUser()._id
-            await websiteService.create({name, addedBy});
+            // await websiteService.create({name, addedBy});
+            await websiteService.getData({name});
 
             // this.setState(this.getInitialState(), () => {
             //     this.props.history.push('/campaigns');

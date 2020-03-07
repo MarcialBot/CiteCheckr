@@ -19,8 +19,8 @@ const Campaigns = (props) => {
             </section>
             ))
             }
-            <CampaignForm {...props}/>
-            <WebsiteForm {...props} />
+            <CampaignForm className="component" {...props}/>
+            <WebsiteForm className="component" {...props} />
         </main>
     );
 };

@@ -28,10 +28,8 @@ app.use(function(req, res, next) {
   });
 // app.use('/api/websites', require('./routes/api/websites'));
 
-
 app.get('/*', function(req, res){
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
-    res.json({msg: 'This is CORS-enabled for all origins!'})
 });
 
 app.listen(port, function() {
