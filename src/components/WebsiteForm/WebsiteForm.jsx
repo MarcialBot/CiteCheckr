@@ -11,13 +11,14 @@ class WebsiteForm extends React.Component {
     handleChange = e => {
         this.setState({
             error: '',
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         });
     }
 
     getInitialState() {
         return {
         name:'',
+        urls: [],
         error: ''
         };
     };
@@ -34,9 +35,9 @@ class WebsiteForm extends React.Component {
         
         try {
             const { name } = this.state;
-            const addedBy = userService.getUser()._id
-            // await websiteService.create({name, addedBy});
-            await websiteService.getData({name});
+            const { urls } = await websiteService.getData({name});
+
+            await websiteService.create({name, urls});
 
             // this.setState(this.getInitialState(), () => {
             //     this.props.history.push('/campaigns');
@@ -56,6 +57,7 @@ class WebsiteForm extends React.Component {
         <section className={styles.section}>
             {
                 this.state.name && <p>{this.state.name}</p>
+
             }
             <form onSubmit={this.handleSubmit} className={styles.form}>
                 <fieldset>

@@ -1,18 +1,10 @@
-const websiteService = require('../../src/utils/websiteService');
 const Website = require('../models/website');
 
 module.exports = {
-    scrape
-}
+    create,
+    index
+};
 
-async function scrape(req, res){
-    try {
-        const website = await websiteService.scrapeSite(req.body);
-        res.status(201).send(website);
-    } catch (error) {
-        res.status(400).send({ error: 'Bad Gateway'})
-    }
-}
 
 async function create(req, res) {
     try{
@@ -21,4 +13,15 @@ async function create(req, res) {
     } catch (error) {
         res.status(401).json({err: 'Unauthorized'});
     }
-}
+};
+
+async function index(req, res) {
+    try{
+        const websites = await Website.find({})
+        .sort('-createdAt').populate('urls');
+        res.json({ websites });
+
+    } catch (error) {
+        res.status(401).json({err: 'Unauthorized'});
+    }
+};

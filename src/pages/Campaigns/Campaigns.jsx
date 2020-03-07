@@ -8,14 +8,13 @@ const Campaigns = (props) => {
         <main>
             <h1>Campaigns</h1>
             {
-            props.campaigns.map(({domain,name,_id, addedBy}) => (
+            props.campaigns.map(({name,_id, addedBy}) => (
             <section 
             key={_id} 
             name={name}
             >
                 <h1>{name}</h1>
                 <small>Added By: {addedBy.name}</small>
-                <small>{domain}</small>
             </section>
             ))
             }

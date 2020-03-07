@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const websiteCtrl = require('../../controllers/websites')
 
-router.get('/', websiteCtrl.create);
+router.post('/', websiteCtrl.create);
+router.get('/', websiteCtrl.index);
 
 module.exports = router;

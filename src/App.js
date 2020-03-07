@@ -17,8 +17,6 @@ import userService from './utils/userService';
 import campaignService from './utils/campaignService';
 import websiteService from './utils/websiteService';
 
-let site = 'https://scrapethissite.com/';
-
 class App extends React.Component {
 
   state = {
@@ -40,8 +38,8 @@ class App extends React.Component {
   async componentDidMount() {
     if(userService.getUser()) {
       const { campaigns } = await campaignService.index();
-      this.setState({ campaigns });
       const { domain } = await websiteService.index();
+      this.setState({ campaigns });
       this.setState({ domain });
     }
   }
@@ -55,6 +53,7 @@ class App extends React.Component {
             <Route exact path ='/' render={props => 
               <Home {...props} />
             } />
+
             <Route exact path ='/campaigns' render={props => 
               userService.getUser()
               ? <Campaigns 
